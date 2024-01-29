@@ -4,20 +4,19 @@ import { Text, ref } from "vue" // you need this to use ref()
 
     const inputtext = ref("");
     const displayText = ref("");
-    const selector = ref("");
-    const color = ref("");
+    const colour = ref("");
 
     const addText = () => {
         displayText.value += inputtext.value;
     };
 
-    const updatecolor = () => {const element = document.querySelector(selector.value);
-        if (element) {
-            element.style.backgroundcolor = color.value;
-            dynamiccolor.value = color.value
-        
-        }
+    let updatecolour = ref('white');
+    let newcolour = ref('');
+    
+    function changecolour () {
+        colour.value = newcolour.value;
     }
+        
 </script>
 
 
@@ -42,14 +41,14 @@ import { Text, ref } from "vue" // you need this to use ref()
 
             <div id="sidebar" class="container"> Sidebar
 
-            <br><input v-model="inputtext" placeholder="Add Text" />
+            <input v-model="inputtext" placeholder="Add Text" />
                     <button @click="addText()">Add Text</button>  
 
-            <br><input v-model="color" type="text" placeholder="Add Color">
-            <button @click="updatecolor" class="container" >Apply Color</button>    
+            <input v-model="colour" type="text" placeholder="Add Color">
+            <button @click="updatecolour" class="container" >Apply Color</button>    
 
         </div>
-            <div id="main" class="container"> <p>{{ displayText }}</p> </div>
+            <div id="main" class="container"> <p>{{ displayText }}</p> </div>     
         
     </div>
 
